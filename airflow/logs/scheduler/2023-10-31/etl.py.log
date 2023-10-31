@@ -1377,3 +1377,59 @@
 [2023-10-31T22:58:48.300+0100] {logging_mixin.py:151} INFO - [2023-10-31T22:58:48.299+0100] {dag.py:2941} INFO - Sync 1 DAGs
 [2023-10-31T22:58:48.349+0100] {logging_mixin.py:151} INFO - [2023-10-31T22:58:48.349+0100] {dag.py:3722} INFO - Setting next_dagrun for etl to 2023-10-31T22:59:00+00:00, run_after=2023-10-31T23:00:00+00:00
 [2023-10-31T22:58:48.388+0100] {processor.py:179} INFO - Processing /Users/iffiness/Documents/Python Projects/Data Enginnering Projects/Data-Engineering/airflow/dags/etl.py took 3.038 seconds
+[2023-10-31T22:59:22.016+0100] {processor.py:157} INFO - Started process (PID=13834) to work on /Users/iffiness/Documents/Python Projects/Data Enginnering Projects/Data-Engineering/airflow/dags/etl.py
+[2023-10-31T22:59:22.026+0100] {processor.py:829} INFO - Processing file /Users/iffiness/Documents/Python Projects/Data Enginnering Projects/Data-Engineering/airflow/dags/etl.py for tasks to queue
+[2023-10-31T22:59:22.027+0100] {logging_mixin.py:151} INFO - [2023-10-31T22:59:22.027+0100] {dagbag.py:536} INFO - Filling up the DagBag from /Users/iffiness/Documents/Python Projects/Data Enginnering Projects/Data-Engineering/airflow/dags/etl.py
+[2023-10-31T22:59:22.170+0100] {processor.py:839} INFO - DAG(s) dict_keys(['etl']) retrieved from /Users/iffiness/Documents/Python Projects/Data Enginnering Projects/Data-Engineering/airflow/dags/etl.py
+[2023-10-31T22:59:23.515+0100] {logging_mixin.py:151} INFO - [2023-10-31T22:59:23.514+0100] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-10-31T22:59:23.539+0100] {logging_mixin.py:151} INFO - [2023-10-31T22:59:23.539+0100] {dag.py:3722} INFO - Setting next_dagrun for etl to 2023-10-31T23:00:00+00:00, run_after=2023-10-31T23:01:00+00:00
+[2023-10-31T22:59:23.562+0100] {processor.py:179} INFO - Processing /Users/iffiness/Documents/Python Projects/Data Enginnering Projects/Data-Engineering/airflow/dags/etl.py took 1.549 seconds
+[2023-10-31T22:59:55.814+0100] {processor.py:157} INFO - Started process (PID=13845) to work on /Users/iffiness/Documents/Python Projects/Data Enginnering Projects/Data-Engineering/airflow/dags/etl.py
+[2023-10-31T22:59:55.823+0100] {processor.py:829} INFO - Processing file /Users/iffiness/Documents/Python Projects/Data Enginnering Projects/Data-Engineering/airflow/dags/etl.py for tasks to queue
+[2023-10-31T22:59:55.824+0100] {logging_mixin.py:151} INFO - [2023-10-31T22:59:55.823+0100] {dagbag.py:536} INFO - Filling up the DagBag from /Users/iffiness/Documents/Python Projects/Data Enginnering Projects/Data-Engineering/airflow/dags/etl.py
+[2023-10-31T22:59:55.947+0100] {processor.py:839} INFO - DAG(s) dict_keys(['etl']) retrieved from /Users/iffiness/Documents/Python Projects/Data Enginnering Projects/Data-Engineering/airflow/dags/etl.py
+[2023-10-31T22:59:57.220+0100] {logging_mixin.py:151} INFO - [2023-10-31T22:59:57.220+0100] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-10-31T22:59:57.253+0100] {logging_mixin.py:151} INFO - [2023-10-31T22:59:57.253+0100] {dag.py:3722} INFO - Setting next_dagrun for etl to 2023-10-31T23:00:00+00:00, run_after=2023-10-31T23:01:00+00:00
+[2023-10-31T22:59:57.277+0100] {processor.py:179} INFO - Processing /Users/iffiness/Documents/Python Projects/Data Enginnering Projects/Data-Engineering/airflow/dags/etl.py took 1.464 seconds
+[2023-10-31T23:00:29.948+0100] {processor.py:157} INFO - Started process (PID=13851) to work on /Users/iffiness/Documents/Python Projects/Data Enginnering Projects/Data-Engineering/airflow/dags/etl.py
+[2023-10-31T23:00:29.956+0100] {processor.py:829} INFO - Processing file /Users/iffiness/Documents/Python Projects/Data Enginnering Projects/Data-Engineering/airflow/dags/etl.py for tasks to queue
+[2023-10-31T23:00:29.956+0100] {logging_mixin.py:151} INFO - [2023-10-31T23:00:29.956+0100] {dagbag.py:536} INFO - Filling up the DagBag from /Users/iffiness/Documents/Python Projects/Data Enginnering Projects/Data-Engineering/airflow/dags/etl.py
+[2023-10-31T23:00:30.073+0100] {processor.py:839} INFO - DAG(s) dict_keys(['etl']) retrieved from /Users/iffiness/Documents/Python Projects/Data Enginnering Projects/Data-Engineering/airflow/dags/etl.py
+[2023-10-31T23:00:31.251+0100] {logging_mixin.py:151} INFO - [2023-10-31T23:00:31.250+0100] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-10-31T23:00:31.274+0100] {logging_mixin.py:151} INFO - [2023-10-31T23:00:31.273+0100] {dag.py:3722} INFO - Setting next_dagrun for etl to 2023-10-31T23:01:00+00:00, run_after=2023-10-31T23:02:00+00:00
+[2023-10-31T23:00:31.296+0100] {processor.py:179} INFO - Processing /Users/iffiness/Documents/Python Projects/Data Enginnering Projects/Data-Engineering/airflow/dags/etl.py took 1.349 seconds
+[2023-10-31T23:01:03.340+0100] {processor.py:157} INFO - Started process (PID=13855) to work on /Users/iffiness/Documents/Python Projects/Data Enginnering Projects/Data-Engineering/airflow/dags/etl.py
+[2023-10-31T23:01:03.346+0100] {processor.py:829} INFO - Processing file /Users/iffiness/Documents/Python Projects/Data Enginnering Projects/Data-Engineering/airflow/dags/etl.py for tasks to queue
+[2023-10-31T23:01:03.347+0100] {logging_mixin.py:151} INFO - [2023-10-31T23:01:03.347+0100] {dagbag.py:536} INFO - Filling up the DagBag from /Users/iffiness/Documents/Python Projects/Data Enginnering Projects/Data-Engineering/airflow/dags/etl.py
+[2023-10-31T23:01:03.474+0100] {processor.py:839} INFO - DAG(s) dict_keys(['etl']) retrieved from /Users/iffiness/Documents/Python Projects/Data Enginnering Projects/Data-Engineering/airflow/dags/etl.py
+[2023-10-31T23:01:04.892+0100] {logging_mixin.py:151} INFO - [2023-10-31T23:01:04.891+0100] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-10-31T23:01:04.932+0100] {logging_mixin.py:151} INFO - [2023-10-31T23:01:04.931+0100] {dag.py:3722} INFO - Setting next_dagrun for etl to 2023-10-31T23:02:00+00:00, run_after=2023-10-31T23:03:00+00:00
+[2023-10-31T23:01:04.967+0100] {processor.py:179} INFO - Processing /Users/iffiness/Documents/Python Projects/Data Enginnering Projects/Data-Engineering/airflow/dags/etl.py took 1.628 seconds
+[2023-10-31T23:01:37.318+0100] {processor.py:157} INFO - Started process (PID=13857) to work on /Users/iffiness/Documents/Python Projects/Data Enginnering Projects/Data-Engineering/airflow/dags/etl.py
+[2023-10-31T23:01:37.326+0100] {processor.py:829} INFO - Processing file /Users/iffiness/Documents/Python Projects/Data Enginnering Projects/Data-Engineering/airflow/dags/etl.py for tasks to queue
+[2023-10-31T23:01:37.326+0100] {logging_mixin.py:151} INFO - [2023-10-31T23:01:37.326+0100] {dagbag.py:536} INFO - Filling up the DagBag from /Users/iffiness/Documents/Python Projects/Data Enginnering Projects/Data-Engineering/airflow/dags/etl.py
+[2023-10-31T23:01:37.439+0100] {processor.py:839} INFO - DAG(s) dict_keys(['etl']) retrieved from /Users/iffiness/Documents/Python Projects/Data Enginnering Projects/Data-Engineering/airflow/dags/etl.py
+[2023-10-31T23:01:38.596+0100] {logging_mixin.py:151} INFO - [2023-10-31T23:01:38.595+0100] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-10-31T23:01:38.618+0100] {logging_mixin.py:151} INFO - [2023-10-31T23:01:38.618+0100] {dag.py:3722} INFO - Setting next_dagrun for etl to 2023-10-31T23:02:00+00:00, run_after=2023-10-31T23:03:00+00:00
+[2023-10-31T23:01:38.643+0100] {processor.py:179} INFO - Processing /Users/iffiness/Documents/Python Projects/Data Enginnering Projects/Data-Engineering/airflow/dags/etl.py took 1.327 seconds
+[2023-10-31T23:02:10.911+0100] {processor.py:157} INFO - Started process (PID=13860) to work on /Users/iffiness/Documents/Python Projects/Data Enginnering Projects/Data-Engineering/airflow/dags/etl.py
+[2023-10-31T23:02:10.921+0100] {processor.py:829} INFO - Processing file /Users/iffiness/Documents/Python Projects/Data Enginnering Projects/Data-Engineering/airflow/dags/etl.py for tasks to queue
+[2023-10-31T23:02:10.921+0100] {logging_mixin.py:151} INFO - [2023-10-31T23:02:10.921+0100] {dagbag.py:536} INFO - Filling up the DagBag from /Users/iffiness/Documents/Python Projects/Data Enginnering Projects/Data-Engineering/airflow/dags/etl.py
+[2023-10-31T23:02:11.063+0100] {processor.py:839} INFO - DAG(s) dict_keys(['etl']) retrieved from /Users/iffiness/Documents/Python Projects/Data Enginnering Projects/Data-Engineering/airflow/dags/etl.py
+[2023-10-31T23:02:12.446+0100] {logging_mixin.py:151} INFO - [2023-10-31T23:02:12.446+0100] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-10-31T23:02:12.468+0100] {logging_mixin.py:151} INFO - [2023-10-31T23:02:12.468+0100] {dag.py:3722} INFO - Setting next_dagrun for etl to 2023-10-31T23:03:00+00:00, run_after=2023-10-31T23:04:00+00:00
+[2023-10-31T23:02:12.490+0100] {processor.py:179} INFO - Processing /Users/iffiness/Documents/Python Projects/Data Enginnering Projects/Data-Engineering/airflow/dags/etl.py took 1.581 seconds
+[2023-10-31T23:02:45.325+0100] {processor.py:157} INFO - Started process (PID=13863) to work on /Users/iffiness/Documents/Python Projects/Data Enginnering Projects/Data-Engineering/airflow/dags/etl.py
+[2023-10-31T23:02:45.334+0100] {processor.py:829} INFO - Processing file /Users/iffiness/Documents/Python Projects/Data Enginnering Projects/Data-Engineering/airflow/dags/etl.py for tasks to queue
+[2023-10-31T23:02:45.335+0100] {logging_mixin.py:151} INFO - [2023-10-31T23:02:45.335+0100] {dagbag.py:536} INFO - Filling up the DagBag from /Users/iffiness/Documents/Python Projects/Data Enginnering Projects/Data-Engineering/airflow/dags/etl.py
+[2023-10-31T23:02:45.471+0100] {processor.py:839} INFO - DAG(s) dict_keys(['etl']) retrieved from /Users/iffiness/Documents/Python Projects/Data Enginnering Projects/Data-Engineering/airflow/dags/etl.py
+[2023-10-31T23:02:46.815+0100] {logging_mixin.py:151} INFO - [2023-10-31T23:02:46.815+0100] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-10-31T23:02:46.841+0100] {logging_mixin.py:151} INFO - [2023-10-31T23:02:46.841+0100] {dag.py:3722} INFO - Setting next_dagrun for etl to 2023-10-31T23:03:00+00:00, run_after=2023-10-31T23:04:00+00:00
+[2023-10-31T23:02:46.867+0100] {processor.py:179} INFO - Processing /Users/iffiness/Documents/Python Projects/Data Enginnering Projects/Data-Engineering/airflow/dags/etl.py took 1.543 seconds
+[2023-10-31T23:03:20.752+0100] {processor.py:157} INFO - Started process (PID=13919) to work on /Users/iffiness/Documents/Python Projects/Data Enginnering Projects/Data-Engineering/airflow/dags/etl.py
+[2023-10-31T23:03:20.761+0100] {processor.py:829} INFO - Processing file /Users/iffiness/Documents/Python Projects/Data Enginnering Projects/Data-Engineering/airflow/dags/etl.py for tasks to queue
+[2023-10-31T23:03:20.762+0100] {logging_mixin.py:151} INFO - [2023-10-31T23:03:20.762+0100] {dagbag.py:536} INFO - Filling up the DagBag from /Users/iffiness/Documents/Python Projects/Data Enginnering Projects/Data-Engineering/airflow/dags/etl.py
+[2023-10-31T23:03:20.981+0100] {processor.py:839} INFO - DAG(s) dict_keys(['etl']) retrieved from /Users/iffiness/Documents/Python Projects/Data Enginnering Projects/Data-Engineering/airflow/dags/etl.py
+[2023-10-31T23:03:23.123+0100] {logging_mixin.py:151} INFO - [2023-10-31T23:03:23.123+0100] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-10-31T23:03:23.156+0100] {logging_mixin.py:151} INFO - [2023-10-31T23:03:23.156+0100] {dag.py:3722} INFO - Setting next_dagrun for etl to 2023-10-31T23:04:00+00:00, run_after=2023-10-31T23:05:00+00:00
+[2023-10-31T23:03:23.196+0100] {processor.py:179} INFO - Processing /Users/iffiness/Documents/Python Projects/Data Enginnering Projects/Data-Engineering/airflow/dags/etl.py took 2.447 seconds
