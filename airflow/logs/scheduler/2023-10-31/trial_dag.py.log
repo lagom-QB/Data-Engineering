@@ -1377,3 +1377,10 @@
 [2023-10-31T22:58:17.387+0100] {logging_mixin.py:151} INFO - [2023-10-31T22:58:17.386+0100] {dag.py:2941} INFO - Sync 1 DAGs
 [2023-10-31T22:58:17.465+0100] {logging_mixin.py:151} INFO - [2023-10-31T22:58:17.465+0100] {dag.py:3722} INFO - Setting next_dagrun for trial_dag to 2023-10-31T21:57:00+00:00, run_after=2023-10-31T21:58:00+00:00
 [2023-10-31T22:58:17.537+0100] {processor.py:179} INFO - Processing /Users/iffiness/Documents/Python Projects/Data Enginnering Projects/Data-Engineering/airflow/dags/trial_dag.py took 0.761 seconds
+[2023-10-31T22:58:54.565+0100] {processor.py:157} INFO - Started process (PID=13759) to work on /Users/iffiness/Documents/Python Projects/Data Enginnering Projects/Data-Engineering/airflow/dags/trial_dag.py
+[2023-10-31T22:58:54.591+0100] {processor.py:829} INFO - Processing file /Users/iffiness/Documents/Python Projects/Data Enginnering Projects/Data-Engineering/airflow/dags/trial_dag.py for tasks to queue
+[2023-10-31T22:58:54.592+0100] {logging_mixin.py:151} INFO - [2023-10-31T22:58:54.591+0100] {dagbag.py:536} INFO - Filling up the DagBag from /Users/iffiness/Documents/Python Projects/Data Enginnering Projects/Data-Engineering/airflow/dags/trial_dag.py
+[2023-10-31T22:58:54.771+0100] {processor.py:839} INFO - DAG(s) dict_keys(['trial_dag']) retrieved from /Users/iffiness/Documents/Python Projects/Data Enginnering Projects/Data-Engineering/airflow/dags/trial_dag.py
+[2023-10-31T22:58:55.797+0100] {logging_mixin.py:151} INFO - [2023-10-31T22:58:55.796+0100] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-10-31T22:58:55.846+0100] {logging_mixin.py:151} INFO - [2023-10-31T22:58:55.845+0100] {dag.py:3722} INFO - Setting next_dagrun for trial_dag to 2023-10-31T21:57:00+00:00, run_after=2023-10-31T21:58:00+00:00
+[2023-10-31T22:58:55.904+0100] {processor.py:179} INFO - Processing /Users/iffiness/Documents/Python Projects/Data Enginnering Projects/Data-Engineering/airflow/dags/trial_dag.py took 1.343 seconds
