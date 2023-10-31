@@ -5,6 +5,8 @@
 The goal of this project is to develop skills in data integration, ETL (Extract, Transform, Load) processes, and data transformation using a sports dataset. The project will focus on collecting, cleaning, transforming, and loading sports-related data into a target repository for analysis and reporting purposes.
 Because the dataset concerns data on the top 5 European leagues and this data seems to be alot at first glance, I'm going to narrow it down by working on data on the *Liga Feminina* for Spain.
 
+---
+
 ## Project Steps
 
 1. Dataset Selection:  
@@ -35,9 +37,29 @@ Because the dataset concerns data on the top 5 European leagues and this data se
    - Implement data validation checks to ensure the accuracy and quality of the integrated data. Perform data profiling, data integrity checks, and cross-checks against external sources to validate the data.
 
 8. Reporting and Analysis:
-   - Utilize data visualization tools or programming libraries to generate meaningful insights and reports from the integrated dataset. Explore different analysis techniques, such as trend analysis, player performance analysis, or team comparisons.
+   - Utilize data visualization tools or programming libraries to generate meaningful insights and reports from the integrated dataset.
 
 9. Documentation and Presentation:
    - Document each step of the project, including the data sources, data transformations, and ETL processes. Create a presentation summarizing the project's objectives, methodology, findings, and potential use cases.
 
-By completing this project, you will gain hands-on experience in data integration, ETL processes, and data transformation using a sports dataset. This will enhance your skills in managing and manipulating data, preparing you for more complex data integration projects in the future.
+---
+
+## Takeaways
+
+- Gained experience in *data integration*, *ETL processes*, and *data transformation* using a sports dataset.
+- This enhanced my skills in managing and manipulating data
+
+### Lessons
+
+__Apache Airflow__ supports a few databases:
+
+- SQLite: *Lightweight filebased database suitable for small-scale deployments and testing*
+
+- PostgreSQL *Relational database widely used in production environments*
+- MySQL *Popular relational database widely used*
+- Microsoft SQL Server *Commercial relational database widely used in enterprises*
+- Oracle *Commercial relational database widely used in enterprises*
+- Amazon RedShift *Cloud-based data warehouse optimized for analytics workloads*
+- Google BigQuery *Cloud-based data warehouse optimized for analytics workloads*
+- Apache Casssandra *Distributed No-SQL database optimized for high scalability and availability*
+- Apache Hive *Data warehouse infrastructure for data summarization, querying and analytics*
