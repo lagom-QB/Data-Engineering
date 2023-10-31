@@ -1908,3 +1908,68 @@ File Path                                                                       
 /Users/iffiness/Documents/Python Projects/Data Enginnering Projects/Data-Engineering/airflow/dags/etl.py                                 1           0  6.47s           2023-10-31T22:03:23
 /Users/iffiness/Documents/Python Projects/Data Enginnering Projects/Data-Engineering/airflow/dags/trial_dag.py                           1           0  3.36s           2023-10-31T22:02:51
 ================================================================================
+[2023-10-31T23:04:02.026+0100] {manager.py:887} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                                                                                       PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+--------------------------------------------------------------------------------------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/Users/iffiness/Documents/Python Projects/Data Enginnering Projects/Data-Engineering/airflow/dags/etl.py                                 1           0  7.92s           2023-10-31T22:04:02
+/Users/iffiness/Documents/Python Projects/Data Enginnering Projects/Data-Engineering/airflow/dags/trial_dag.py                           1           0  6.72s           2023-10-31T22:03:31
+================================================================================
+[2023-10-31T23:04:36.244+0100] {manager.py:887} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                                                                                       PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+--------------------------------------------------------------------------------------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/Users/iffiness/Documents/Python Projects/Data Enginnering Projects/Data-Engineering/airflow/dags/etl.py                                 1           0  4.20s           2023-10-31T22:04:36
+/Users/iffiness/Documents/Python Projects/Data Enginnering Projects/Data-Engineering/airflow/dags/trial_dag.py                           1           0  4.48s           2023-10-31T22:04:07
+================================================================================
+[2023-10-31T23:05:10.187+0100] {manager.py:887} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                                                                                       PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+--------------------------------------------------------------------------------------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/Users/iffiness/Documents/Python Projects/Data Enginnering Projects/Data-Engineering/airflow/dags/etl.py                                 1           0  3.84s           2023-10-31T22:05:10
+/Users/iffiness/Documents/Python Projects/Data Enginnering Projects/Data-Engineering/airflow/dags/trial_dag.py                           1           0  3.27s           2023-10-31T22:04:41
+================================================================================
+[2023-10-31T23:05:44.552+0100] {manager.py:887} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                                                                                       PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+--------------------------------------------------------------------------------------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/Users/iffiness/Documents/Python Projects/Data Enginnering Projects/Data-Engineering/airflow/dags/etl.py                                 1           0  4.23s           2023-10-31T22:05:44
+/Users/iffiness/Documents/Python Projects/Data Enginnering Projects/Data-Engineering/airflow/dags/trial_dag.py                           1           0  4.00s           2023-10-31T22:05:16
+================================================================================
+[2023-10-31T23:06:18.644+0100] {manager.py:887} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                                                                                       PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+--------------------------------------------------------------------------------------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/Users/iffiness/Documents/Python Projects/Data Enginnering Projects/Data-Engineering/airflow/dags/etl.py                                 1           0  4.00s           2023-10-31T22:06:18
+/Users/iffiness/Documents/Python Projects/Data Enginnering Projects/Data-Engineering/airflow/dags/trial_dag.py                           1           0  2.86s           2023-10-31T22:05:49
+================================================================================
+[2023-10-31T23:06:52.104+0100] {manager.py:887} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                                                                                       PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+--------------------------------------------------------------------------------------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/Users/iffiness/Documents/Python Projects/Data Enginnering Projects/Data-Engineering/airflow/dags/etl.py                                 1           0  3.36s           2023-10-31T22:06:52
+/Users/iffiness/Documents/Python Projects/Data Enginnering Projects/Data-Engineering/airflow/dags/trial_dag.py                           1           0  3.42s           2023-10-31T22:06:23
+================================================================================
+[2023-10-31T23:07:05.354+0100] {manager.py:755} INFO - Searching for files in /Users/iffiness/Documents/Python Projects/Data Enginnering Projects/Data-Engineering/airflow/dags
+[2023-10-31T23:07:05.359+0100] {manager.py:758} INFO - There are 2 files in /Users/iffiness/Documents/Python Projects/Data Enginnering Projects/Data-Engineering/airflow/dags
+[2023-10-31T23:07:26.138+0100] {manager.py:887} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                                                                                       PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+--------------------------------------------------------------------------------------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/Users/iffiness/Documents/Python Projects/Data Enginnering Projects/Data-Engineering/airflow/dags/etl.py                                 1           0  3.92s           2023-10-31T22:07:26
+/Users/iffiness/Documents/Python Projects/Data Enginnering Projects/Data-Engineering/airflow/dags/trial_dag.py                           1           0  2.86s           2023-10-31T22:06:56
+================================================================================
