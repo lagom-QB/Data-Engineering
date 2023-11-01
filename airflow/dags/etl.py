@@ -1,8 +1,7 @@
 from airflow import DAG
 from airflow.operators.python import PythonOperator
-from airflow.decorators import task
+
 from datetime import datetime, timedelta
-import logging
 
 
 # Define the DAG so it runs on an hourly basis
@@ -11,17 +10,28 @@ with DAG(
     schedule_interval="* * * * *", # minute hour day month day_of_week
     catchup=False,
     description='Load data into an SQLite databse through airflow',
-    start_date=datetime.now(),
+    start_date=datetime(2023, 10 , 29),
+    tags=['etl', 'airflow', 'python'],
     default_args={
         'owner': 'Brenda',
         'depends_on_past': True,
         'retries': 2,
-        'retry_delay': timedelta(minutes=5)
+        'retry_delay': timedelta(minutes=2)
     },  # DAG arguments
-    tags=['etl', 'airflow'],
 ) as dag:
+    def check_task_run(dag_id, task_id, execution_date):
+        import logging
+        from airflow.models import TaskInstance
+
+        task_instance = TaskInstance(dag=dag_id, task_id=task_id, execution_date=execution_date)
+        if task_instance.current_state() is not None:
+            logging.info(f"Task {task_id} has already been run on {execution_date}")
+        else:
+            logging.info(f"Task {task_id} has not been run")
+    check_task_run.doc_md = """ Validate if the task has already been run """
+
     # ----- Variables -----
-    file_location  = 'assets/matches-checkpoint.csv'
+    file_location  = 'airflow/dags/assets/matches-checkpoint.csv'
     useless_ids    = ['Away_id','Home_id','Match_id','League_id']
     spanish_squads = ['Sevilla', 'Sporting Huelva', 'Athletic Club', 'Levante Planas',
                       'UDG Tenerife', 'Villarreal', 'Madrid CFF', 'Barcelona',
@@ -32,17 +42,28 @@ with DAG(
     def extract_data():
         import pandas as pd
         import logging
+        import time
+        import os
 
-        matches = pd.read_csv(file_location) # read the csv file
-        logging.info(f"Dataframe shape: {matches.shape} \n {matches.head()}")
+        start_time = time.time()
+        try:
+            matches = pd.read_csv(file_location) # read the csv file
+            logging.info(f"Dataframe shape: {matches.shape} \n {matches.head()}")
+            
+            matches = matches.dropna() # drop the null values
+            matches = matches[(matches['Home'].isin(spanish_squads)) | (matches['Away'].isin(spanish_squads))] # filter out the spanish teams 
+            matches = matches.drop(useless_ids, axis=1).reset_index(drop=True) # drop the useless ids
+            matches['Date'] = pd.to_datetime(matches['Date']) # convert the date column to datetime
 
-        matches = matches[(matches['Home'].isin(spanish_squads)) | (matches['Away'].isin(spanish_squads))] # filter out the spanish teams 
-        matches = matches.drop(useless_ids, axis=1).reset_index(drop=True) # drop the useless ids
-        matches['Date'] = pd.to_datetime(matches['Date']) # convert the date column to datetime
+            print(f'Completed extracting data from csv. {str(round(time.time() - start_time, 2))} seconds elapsed.')
+            logging.info(matches.head())
 
-        logging.info(matches.head())
+            return matches
+        except Exception as e:
+            logging.error(f'Error reading file :{e}')
+            raise e
+        check_task_run(dag.dag_id, 'extract_data', dag.start_date)
 
-        return matches
     extract_data.doc_md = """
         file_loc = file location from where the data is to be extracted
         useless_ids = list of ids that are not required
@@ -58,12 +79,18 @@ with DAG(
             "spanish_squads": spanish_squads,
         },
     )
+    check_extract_task = PythonOperator(task_id="check_extract_run",
+                                        python_callable=check_task_run,
+                                        op_kwargs={'dag_id': dag.dag_id, 'task_id': 'extract_data', 'execution_date': datetime.now()}
+                                       )
     # ---------------------
     # Transform the data
     def transform_data(matches):
         import pandas as pd
         import logging
+        import time
 
+        start_time = time.time()
         matches = matches.dropna() # drop the null values
         matches['Date'] = pd.to_datetime(matches['Date'])
         matches['Time'] = pd.to_datetime(matches['Time'], format='%H:%M:%S').dt.time # convert the time column to time
@@ -102,8 +129,10 @@ with DAG(
                 return 0
         matches['Points'] = matches.apply(get_points, axis=1)
 
+        print(f'Completed transforming data. {str(round(time.time() - start_time, 2))} seconds elapsed.')
         logging.info(f"Dataframe transformed: {matches.head()}")
 
+        check_task_run(dag.dag_id, 'transform_data', dag.start_date)
         return matches
     transform_data.doc_md = """
     TODO::
@@ -115,50 +144,39 @@ with DAG(
                                       python_callable=transform_data,
                                       op_kwargs={'matches': extracted_data}
                                      )
+
+    check_transform_task = PythonOperator(task_id="check_transform_run",
+                                          python_callable=check_task_run,
+                                          op_kwargs={'dag_id': dag.dag_id, 'task_id': 'transform_data', 'execution_date': datetime.now()}
+                                         )
     # ---------------------
     # Load the data into the database
     def load_data(matches):
         import sqlite3
         import logging
+        import time
 
+        start_time = time.time()
         # Connect to database
         conn = sqlite3.connect('assets/spanish_matches.db')
 
         # Create cursor
         c = conn.cursor()
 
-        c.execute("""CREATE TABLE IF NOT EXISTS matches (
-            Wk INTERGER,
-            Day TEXT,
-            Date DATE,
-            Time TIME,
-            Home TEXT,
-            xGHome FLOAT,
-            Score TEXT,
-            xGAway FLOAT,
-            Away TEXT,
-            xPHome FLOAT,
-            xPAway FLOAT,
-            ScoreHome INTERGER,
-            ScoreAway INTERGER,
-            GoalDifference INTERGER,
-            Result TEXT,
-            ExpectedGoalDifference FLOAT,
-            Points INTERGER,
-            ExpectedPoints INTERGER,
-            WinPercentage FLOAT,
-            TotalGoals INTERGER,
-            xGRatio FLOAT
-        )""") # Create the matches table
 
+        matches.to_sql('matches', 
+                       conn, 
+                       if_exists='replace', 
+                       index=False) # Insert the values from the matches dataframe into the matches table
+        
         logging.info(c.execure("SELECT * FROM matches").fetchall()) # Print the matches table
-
-        matches.to_sql('matches', conn, if_exists='replace', index=False) # Insert the values from the matches dataframe into the matches table
+        print(f'Completed loading data. {str(round(time.time() - start_time, 2))} seconds elapsed.')
 
         conn.commit() # Commit changes
 
         c.close() # Close cursor
         conn.close() # Close connection
+
     load_data.doc_md = """
     TODO::
         Load the data into the database after creating the table
@@ -166,9 +184,14 @@ with DAG(
     loaded_data = PythonOperator(task_id="load_data", 
                                  python_callable=load_data,
                                  op_kwargs={'matches': transformed_data})
+    
+    check_load_task = PythonOperator(task_id="check_load_run",
+                                          python_callable=check_task_run,
+                                          op_kwargs={'dag_id': dag.dag_id, 'task_id': 'load_data', 'execution_date': datetime.now()}
+                                         )
     # ---------------------
     # Validate the data
     # ---------------------
 
     # Define the order of the tasks
-    extracted_data >> transformed_data >> loaded_data
+    extracted_data >> check_extract_task >> transformed_data >> check_transform_task >> loaded_data
