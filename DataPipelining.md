@@ -7,6 +7,13 @@ Because the dataset concerns data on the top 5 European leagues and this data se
 
 ---
 
+## Goal: Predict the resulting scores from a game
+
+The final deliverable of this project is a model which predicts the possible winner of a game and expected results by analysing past matches and performance.  
+However, it is worth realising that this is real life and we can't exactly predict results of events such as these.
+
+---
+
 ## Project Steps
 
 1. Dataset Selection:  
@@ -22,25 +29,30 @@ Because the dataset concerns data on the top 5 European leagues and this data se
 
 3. Data Cleaning and Preprocessing:
    - Clean the collected data by addressing issues like missing values, inconsistent formatting, and outliers. Standardize the data to ensure consistent data types and formats across the dataset.
-   - Focusing on the *all_players.csv* and the *matches_checkpoints.csv*, I eliminated a buch of columns which I couldn't explain and couldn't find a description for on the data source.
+   - Focusing on the *matches_checkpoints.csv*, I eliminated a bunch of columns which I couldn't explain and couldn't find a description for from the data source.
 
-4. Data Transformation:
-   - Apply data transformation techniques to enrich the dataset. This could involve merging multiple datasets, calculating derived metrics (e.g., batting average, win percentage), or converting data into a more suitable format for analysis.
+4. Feature Engineering:
+   - Apply data transformation techniques to enrich the dataset. This involved merging multiple datasets, calculating derived metrics and converting data into a more suitable format for analysis.
 
-5. ETL Process Design:
-   - Design an ETL process to automate the extraction, transformation, and loading of the sports data. Define the workflow and dependencies between various steps, ensuring that the process is efficient, scalable, and reliable.
+5. Model Building:
+   - Split the data in train and testing sets.
+   - Choose appropriate ML algorithms then train the models on the train data and evaluate models on the testing set using evaluation metrics.
+   - Tune the hyperparameters of the model using techniques like gridSerach or randomSearch to optimize their performances.
 
-6. Data Integration:
-   - Integrate the cleaned and transformed sports data into a target repository such as a relational database, data warehouse, or cloud-based storage. Ensure that the data is structured and organized for efficient querying and analysis.
+6. Aiflow and SQLite:
+   - Create a DAG t define the workflow for performing predictions
+   - Define tasks in the DAG to load the trained model, load the test data, perform predictions using the models and store the results in SQLite
+   - Configure DAG to run according to a schedule
+   - Use the SQLite database to store the predictions and any other relevat information (model performance, evaluation metrics)
 
-7. Validation and Quality Assurance:
-   - Implement data validation checks to ensure the accuracy and quality of the integrated data. Perform data profiling, data integrity checks, and cross-checks against external sources to validate the data.
+7. Reporting and Documentation:
+   - Document the project processes, procedures and explanations using markdown files, noteboks and comments
+   - Detail explanations of the exploration and preprocessing, feature engineering, model building and use of airflow and sqlite
 
-8. Reporting and Analysis:
-   - Utilize data visualization tools or programming libraries to generate meaningful insights and reports from the integrated dataset.
-
-9. Documentation and Presentation:
-   - Document each step of the project, including the data sources, data transformations, and ETL processes. Create a presentation summarizing the project's objectives, methodology, findings, and potential use cases.
+8. Deployment and Presentation:
+   - Prepare the project for deployment by packaging the code, dependencies and documentation.
+   - Showcase the project including the problem statement, steps, procedures, results and visualizations.
+   - Showcase the key findings, insights and value of the project
 
 ---
 

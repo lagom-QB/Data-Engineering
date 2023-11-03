@@ -19,7 +19,7 @@ with DAG(
         'retry_delay': timedelta(minutes=2)
     },  # DAG arguments
 ) as dag:
-    def check_task_run(dag_id, task_id, execution_date):
+    def check_task_run(dag_id, task_id, execution_date=datetime.now()):
         import logging
         from airflow.models import TaskInstance
 
@@ -62,7 +62,6 @@ with DAG(
         except Exception as e:
             logging.error(f'Error reading file :{e}')
             raise e
-        check_task_run(dag.dag_id, 'extract_data', dag.start_date)
 
     extract_data.doc_md = """
         file_loc = file location from where the data is to be extracted
@@ -79,10 +78,6 @@ with DAG(
             "spanish_squads": spanish_squads,
         },
     )
-    check_extract_task = PythonOperator(task_id="check_extract_run",
-                                        python_callable=check_task_run,
-                                        op_kwargs={'dag_id': dag.dag_id, 'task_id': 'extract_data', 'execution_date': datetime.now()}
-                                       )
     # ---------------------
     # Transform the data
     def transform_data(matches):
@@ -132,7 +127,6 @@ with DAG(
         print(f'Completed transforming data. {str(round(time.time() - start_time, 2))} seconds elapsed.')
         logging.info(f"Dataframe transformed: {matches.head()}")
 
-        check_task_run(dag.dag_id, 'transform_data', dag.start_date)
         return matches
     transform_data.doc_md = """
     TODO::
@@ -145,10 +139,6 @@ with DAG(
                                       op_kwargs={'matches': extracted_data}
                                      )
 
-    check_transform_task = PythonOperator(task_id="check_transform_run",
-                                          python_callable=check_task_run,
-                                          op_kwargs={'dag_id': dag.dag_id, 'task_id': 'transform_data', 'execution_date': datetime.now()}
-                                         )
     # ---------------------
     # Load the data into the database
     def load_data(matches):
@@ -172,6 +162,8 @@ with DAG(
         logging.info(c.execure("SELECT * FROM matches").fetchall()) # Print the matches table
         print(f'Completed loading data. {str(round(time.time() - start_time, 2))} seconds elapsed.')
 
+        # check_task_run(dag.dag_id, 'load_data', dag.start_date)
+
         conn.commit() # Commit changes
 
         c.close() # Close cursor
@@ -184,14 +176,17 @@ with DAG(
     loaded_data = PythonOperator(task_id="load_data", 
                                  python_callable=load_data,
                                  op_kwargs={'matches': transformed_data})
-    
-    check_load_task = PythonOperator(task_id="check_load_run",
-                                          python_callable=check_task_run,
-                                          op_kwargs={'dag_id': dag.dag_id, 'task_id': 'load_data', 'execution_date': datetime.now()}
-                                         )
     # ---------------------
-    # Validate the data
+    # Validate the Executions of the tasks
+    def checking():
+        check_task_run(dag.dag_id, 'extract_data')
+        check_task_run(dag.dag_id, 'transform_data')
+        check_task_run(dag.dag_id, 'load_data')
+
+    checking.doc_md = """ Validate if the task has already been run """
+    check_task = PythonOperator(task_id="check_task", 
+                                python_callable=checking)
     # ---------------------
 
     # Define the order of the tasks
-    extracted_data >> check_extract_task >> transformed_data >> check_transform_task >> loaded_data
+    extracted_data >> transformed_data >> loaded_data >> check_task
