@@ -35,6 +35,8 @@ However, it is worth realising that this is real life and we can't exactly predi
    - Apply data transformation techniques to enrich the dataset. This involved merging multiple datasets, calculating derived metrics and converting data into a more suitable format for analysis.
 
 5. Model Building:
+   _Because there are 2 target variables, I can approach this with Multi-output regression, separate models or sequential models_.  
+   - The ML problem is a aregression problem, seeing as the target variables are continous btu independent of each other so I'm going to build separate models for each target.
    - Split the data in train and testing sets.
    - Choose appropriate ML algorithms then train the models on the train data and evaluate models on the testing set using evaluation metrics.
    - Tune the hyperparameters of the model using techniques like gridSerach or randomSearch to optimize their performances.

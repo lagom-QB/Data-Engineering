@@ -3,3 +3,5 @@ airflow/logs/
 airflow-webserver.pid
 airflow/airflow-webserver.pid
 airflow/webserver_config.py
+airflow-webserver.pid
+catboost_info/
