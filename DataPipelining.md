@@ -61,7 +61,16 @@ However, it is worth realising that this is real life and we can't exactly predi
 ## Takeaways
 
 - Gained experience in *data integration*, *ETL processes*, and *data transformation* using a sports dataset.
-- This enhanced my skills in managing and manipulating data
+- This enhanced my skills in managing and manipulating data.
+- My goal was to challenge myself to build the minimun viable product from a data project, challenging myself to move from the usual jupyter notebook to something useable.
+
+---
+
+## Next steps
+
+- Connect to a realtime database
+- Use a bigger dataset not just the female spanish teams.
+- Incorporate other statistics into the model such as player statistics.... _This may be heavy and alot to input so maybe automate this??_
 
 ### Lessons
 
