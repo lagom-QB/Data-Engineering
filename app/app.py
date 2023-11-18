@@ -1,60 +1,14 @@
-from unittest import result
 import streamlit as st
 # Imports
-import numpy as np
 import pandas as pd
 
-import matplotlib.pyplot as plt
-import seaborn as sns
-
-import math
-
-from sklearn.linear_model import LinearRegression
-from sklearn.metrics import mean_absolute_error
-from sklearn.model_selection import train_test_split
-from sklearn.model_selection import GridSearchCV
-from sklearn.ensemble import AdaBoostRegressor, RandomForestRegressor, GradientBoostingRegressor
-from sklearn.neighbors import KNeighborsRegressor
-from sklearn.tree import DecisionTreeRegressor
-
-from datetime import datetime, timedelta
-
-# import sqlite3
-# from airflow import DAG
-# from airflow.utils.dates import days_ago
-# from airflow.operators.python_operator import PythonOperator
-
-import nbformat
+from datetime import datetime
 
 import warnings
-from typing import Optional, Tuple, Callable, Dict, Any, List, Union
-import fire
 
 warnings.filterwarnings('ignore')
 
-# Create a requirements.txt file with the necessary packages
-# !pip freeze > airflow/dags/requirements.txt
-
-from catboost import CatBoostRegressor
-from lightgbm import LGBMRegressor
-from sklearn.kernel_ridge import KernelRidge
-from sklearn.linear_model import ElasticNet, Lasso, Ridge, SGDRegressor
-from sklearn.svm import SVR
-from xgboost import XGBRegressor
-
-from sklearn.discriminant_analysis import StandardScaler
-
-from fastapi import FastAPI
-
 import pickle
-import os
-from load_data import load_data_from_source
-from transform_data import transform_data_into_features_and_targets
-from baseline_model import train_baseline
-
-from train_models import train_model, save_best_model, training_process
-
-from model_prediction import predict_res
 
 
 
