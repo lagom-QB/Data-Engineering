@@ -41,7 +41,7 @@ def transform_data_into_features_and_targets(
         # Dataframe with the data
         df: pd.DataFrame,
         score: str
-) -> Tuple[pd.DataFrame, pd.Series]:
+) -> Tuple[pd.DataFrame, pd.Series|None]:
     """
     Transforms the data into features and targets for either the home or away team.
     :param df: Dataframe with the data
@@ -58,9 +58,11 @@ def transform_data_into_features_and_targets(
     
     if score == 'Home':
         target = targets[0]
-    else:
+    elif score == 'Away':
         target = targets[1]
-    
+    else:
+        pass
+
     # Create the targets from the score
     y = df[target].copy()
     # Create the features
@@ -71,7 +73,11 @@ def transform_data_into_features_and_targets(
     X = df.drop(columns=targets)
     X = X.drop(columns=['xPHome', 'xPAway', 'xGHome', 'xGAway'])
     
-    return X, y
+    # if score is empty, return just the features
+    if score == '':
+        return X, None
+    else:
+        return X, y
 
 if __name__ == '__main__':
     fire.Fire(transform_data_into_features_and_targets)
