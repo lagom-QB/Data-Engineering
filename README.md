@@ -1,4 +1,4 @@
-# Project Title: Sports Data Integration and ETL Skill Development
+# Sports Data Integration and ETL Skill Development
 
 ## Project Description
 
