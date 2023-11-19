@@ -4,7 +4,7 @@
 
 The goal of this project is to develop skills in data integration, ETL (Extract, Transform, Load) processes, and data transformation using a sports dataset. The project will focus on collecting, cleaning, transforming, and loading sports-related data into a target repository for analysis and reporting purposes.
 Because the dataset concerns data on the top 5 European leagues and this data seems to be alot at first glance, I'm going to narrow it down by working on data on the *Liga Feminina* for Spain.  
-[![StreamLit](https://img.shields.io/badge/StreamLitLink-gray)](https://la-liga.streamlit.app/)
+👉👉👉 [![StreamLit](https://img.shields.io/badge/StreamLitLink-gray)](https://la-liga.streamlit.app/)
 
 ---
 
