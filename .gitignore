@@ -6,3 +6,6 @@ airflow/webserver_config.py
 airflow-webserver.pid
 catboost_info/
 Archive.zip
+airflow/dags/__pycache__/
+app/__pycache__/
+.vscode/

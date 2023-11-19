@@ -17,11 +17,16 @@ def encode_categorical_varaibles(df: pd.DataFrame)-> pd.DataFrame:
     """
     # Get the categorical columns
     categorical_vars = df.select_dtypes(include=['object']).columns
+    spanish_teams = ['Alavés', 'Alhama', 'Athletic Club', 'Atlético Madrid',
+                                'Barcelona', 'Levante', 'Levante Planas', 'Madrid CFF',
+                                'Real Betis', 'Real Madrid', 'Real Sociedad', 'Sevilla',
+                                'Sporting Huelva', 'UDG Tenerife', 'Valencia', 'Villarreal']
 
     df['Numeric_Day']=df['Day'].apply(lambda x: 2 if x == 'Tue' else 3 if x == 'Wed' else 4 if x == 'Thu' else 6 if x == 'Sat' else 7) # Encode the Day column
     
     encoder = LabelEncoder() # Initialize the encoder
-    df['Numeric_Home'] = encoder.fit_transform(df['Home']) # Encode the Home column
+    teams = encoder.fit_transform(spanish_teams) # Encode the teams
+    df['Numeric_Home'] = encoder.transform(df['Home']) # Encode the Home column
     df['Numeric_Away'] = encoder.transform(df['Away']) # Encode the Away column
 
     encoder_time = OrdinalEncoder() # Initialize the encoder
@@ -41,7 +46,7 @@ def transform_data_into_features_and_targets(
         # Dataframe with the data
         df: pd.DataFrame,
         score: str
-) -> Tuple[pd.DataFrame, pd.Series|None]:
+) -> Tuple[pd.DataFrame, pd.Series]:
     """
     Transforms the data into features and targets for either the home or away team.
     :param df: Dataframe with the data
@@ -61,21 +66,24 @@ def transform_data_into_features_and_targets(
     elif score == 'Away':
         target = targets[1]
     else:
-        pass
+        targets = [] # If the score is empty, the targets are empty
 
-    # Create the targets from the score
-    y = df[target].copy()
+    y = None # Initialize the targets variable
+    if len(targets)>0:
+        # Create the targets from the score
+        y = df[target].copy()
+    
     # Create the features
     # The columns that contain 'id' are not useful for the model so I drop them
     for col in df.columns:
         if col.lower().__contains__('id') or df[col].dtype == 'object':
             df = df.drop(col, axis=1)
     X = df.drop(columns=targets)
-    X = X.drop(columns=['xPHome', 'xPAway', 'xGHome', 'xGAway'])
     
     # if score is empty, return just the features
     if score == '':
-        return X, None
+        print(f'Returning just the features .... {X}')
+        return X # type: ignore
     else:
         return X, y
 

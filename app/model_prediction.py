@@ -8,6 +8,7 @@ import pickle
 import os
 
 def predict_res(features: list) -> str:
+    print(features)
     # Get the model in the model_dir which ends in model_type
     model_dir = 'airflow/dags/model_dir/'
     model_home_loc = [model_dir+file for file in os.listdir(model_dir) if file.endswith('home.pkl')][0]

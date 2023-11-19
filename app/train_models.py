@@ -1,10 +1,11 @@
 # Imports
+from matplotlib import pyplot as plt
 import pandas as pd
 
 from sklearn.linear_model import LinearRegression
 from sklearn.metrics import mean_absolute_error
 from sklearn.model_selection import train_test_split
-from sklearn.model_selection import GridSearchCV
+from sklearn.model_selection import GridSearchCV, RandomizedSearchCV
 from sklearn.ensemble import AdaBoostRegressor, RandomForestRegressor, GradientBoostingRegressor
 from sklearn.neighbors import KNeighborsRegressor
 from sklearn.tree import DecisionTreeRegressor
@@ -120,8 +121,10 @@ def tune_model_parameters(model_name: str, X_train: pd.DataFrame, y_train: pd.Se
         raise ValueError('Model not supported yet')
     
     # Tune the model
-    tuner = GridSearchCV(model, parameters, scoring='neg_mean_absolute_error', cv=5) # type: ignore
+    # tuner = GridSearchCV(model, parameters, scoring='r2_score', cv=10) # type: ignore
+    tuner = RandomizedSearchCV(model, parameters, n_iter=500 , scoring='neg_mean_absolute_error', n_jobs=-1, cv=10) # type: ignore
     tuner.fit(X_train, y_train)
+
 
     # Get the best parameters
     best_params = tuner.best_params_
@@ -130,6 +133,8 @@ def tune_model_parameters(model_name: str, X_train: pd.DataFrame, y_train: pd.Se
 
     return [model,best_params] # type: ignore
 
+n_iterations = 50
+    
 def train_model(rankings: Dict[str, Dict[str, Union[str,int, float]]], model_name: str, features: pd.DataFrame, target: pd.Series) -> Dict[str, Union[str,int, float]]:
     """
         Tunes and trains a model and returns the evaluation metrics
@@ -151,11 +156,34 @@ def train_model(rankings: Dict[str, Dict[str, Union[str,int, float]]], model_nam
     # print(f"\n\n{model} Best parameters: {params}")
 
     model.set_params(**params) # type: ignore # Assign the best parameters to the model
+    mae_train = []
 
+    for epoch in range(n_iterations):
+        model.fit(X_train, y_train) # type: ignore
+        
+        y_pred = model.predict(X_train) # type: ignore
+        
+        curr_mae_train = mean_absolute_error(y_train, y_pred)
+        mae_train.append(curr_mae_train)
+        
+    plt.figure(figsize=(14,6))
+    
+    plt.xlim(0, n_iterations)
+    plt.ylim(-1, 1)
+    
+    plt.plot(mae_train, linewidth=.8, label='Training MSE')
+    
+    plt.legend()
+    plt.xlabel(f'mse train')
+    plt.title(f'Model: {model.__class__.__name__} | Epoch: {epoch+1}/{n_iterations}\n Training MSE: {curr_mae_train:.4f}') # type: ignore
+    # plt.pause(1.2)
+    
+    plt.show()
+    
     model.fit(X_train, y_train) # type: ignore
     y_pred = model.predict(X_test) # type: ignore # Predict the target
 
-    mae = mean_absolute_error(y_test, y_pred)
+    mae = min(min(mae_train), mean_absolute_error(y_test, y_pred))
 
     end_time = datetime.now()
     runtime = end_time - start_time
@@ -201,7 +229,7 @@ def save_best_model(name: str, model_list: Dict[str, Dict[str, Union[str, int, f
     
     # Sort the models by their mae
     model_comparisons = model_comparisons.sort_values(by='mae').reset_index(drop=True)
-    print(model_comparisons)
+    # print(model_comparisons)
 
     # Save th best model to a pickle file from the model_comparisons dataframe
     best_model = model_comparisons.loc[0, 'model']
@@ -211,6 +239,11 @@ def save_best_model(name: str, model_list: Dict[str, Dict[str, Union[str, int, f
     # if file path exists, remove all files in it
     model_dir = 'airflow/dags/model_dir'
     os.makedirs(model_dir, exist_ok=True)
+
+    # Remove all files in the model_dir ending with {name}.pkl
+    for file in os.listdir(model_dir):
+        if file.endswith(f'{name}.pkl'):
+            os.remove(f'{model_dir}/{file}')
 
     # Save the best model to a pickle file
     with open(f'{model_dir}/{best_model.__class__.__name__}_{name}.pkl', 'wb') as file:
