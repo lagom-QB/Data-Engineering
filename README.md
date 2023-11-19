@@ -41,17 +41,7 @@ However, it is worth realising that this is real life and we can't exactly predi
    - Choose appropriate ML algorithms then train the models on the train data and evaluate models on the testing set using evaluation metrics.
    - Tune the hyperparameters of the model using techniques like gridSerach or randomSearch to optimize their performances.
 
-6. Aiflow and SQLite:
-   - Create a DAG t define the workflow for performing predictions
-   - Define tasks in the DAG to load the trained model, load the test data, perform predictions using the models and store the results in SQLite
-   - Configure DAG to run according to a schedule
-   - Use the SQLite database to store the predictions and any other relevat information (model performance, evaluation metrics)
-
-7. Reporting and Documentation:
-   - Document the project processes, procedures and explanations using markdown files, noteboks and comments
-   - Detail explanations of the exploration and preprocessing, feature engineering, model building and use of airflow and sqlite
-
-8. Deployment and Presentation:
+6. Deployment and Presentation:
    - Prepare the project for deployment by packaging the code, dependencies and documentation.
    - Showcase the project including the problem statement, steps, procedures, results and visualizations.
    - Showcase the key findings, insights and value of the project
@@ -73,16 +63,15 @@ However, it is worth realising that this is real life and we can't exactly predi
 - Incorporate other statistics into the model such as player statistics.... _This may be heavy and alot to input so maybe automate this??_
 
 ### Lessons
-
+```
 __Apache Airflow__ supports a few databases:
-
-- SQLite: *Lightweight filebased database suitable for small-scale deployments and testing*
-
-- PostgreSQL *Relational database widely used in production environments*
-- MySQL *Popular relational database widely used*
-- Microsoft SQL Server *Commercial relational database widely used in enterprises*
-- Oracle *Commercial relational database widely used in enterprises*
-- Amazon RedShift *Cloud-based data warehouse optimized for analytics workloads*
-- Google BigQuery *Cloud-based data warehouse optimized for analytics workloads*
-- Apache Casssandra *Distributed No-SQL database optimized for high scalability and availability*
-- Apache Hive *Data warehouse infrastructure for data summarization, querying and analytics*
+- SQLite: Lightweight filebased database suitable for small-scale deployments and testing
+- PostgreSQL: Relational database widely used in production environments
+- MySQL: Popular relational database widely used
+- Microsoft SQL Server: Commercial relational database widely used in enterprises
+- Oracle: Commercial relational database widely used in enterprises
+- Amazon RedShift: Cloud-based data warehouse optimized for analytics workloads
+- Google BigQuery: Cloud-based data warehouse optimized for analytics workloads
+- Apache Casssandra: Distributed No-SQL database optimized for high scalability and availability
+- Apache Hive: Data warehouse infrastructure for data summarization, querying and analytics
+```
