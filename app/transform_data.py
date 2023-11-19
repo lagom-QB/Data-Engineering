@@ -1,13 +1,11 @@
 # Imports
-import pandas as pd
+from typing import Tuple
 
-from typing import Optional, Tuple
+import pandas as pd
 import fire
 
-import warnings
-
 from sklearn.preprocessing import OrdinalEncoder, LabelEncoder, PolynomialFeatures
-warnings.filterwarnings('ignore')
+
 
 def encode_categorical_varaibles(df: pd.DataFrame)-> pd.DataFrame:
     """
