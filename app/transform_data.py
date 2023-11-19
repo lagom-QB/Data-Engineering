@@ -2,7 +2,7 @@
 from typing import Tuple
 
 import pandas as pd
-import fire
+# import fire
 
 from sklearn.preprocessing import OrdinalEncoder, LabelEncoder, PolynomialFeatures
 
@@ -86,4 +86,5 @@ def transform_data_into_features_and_targets(
         return X, y
 
 if __name__ == '__main__':
-    fire.Fire(transform_data_into_features_and_targets)
+    # fire.Fire(transform_data_into_features_and_targets)
+    transform_data_into_features_and_targets
